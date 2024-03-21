@@ -164,11 +164,6 @@ def raspador_bbc():
         titulo = conteudo.text
         link = conteudo.find('a').get('href')
         manchetes_bbc.append(f"{titulo}\n{link}")
-
-    for links in manchetes_bbc:
-       if 'https://' not in links[1]:
-          links[1] = 'https://www.bbc.com/'+links[1]
-          
     return "\n\n".join(manchetes_bbc)
 
 
