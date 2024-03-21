@@ -2,6 +2,4 @@ Flask
 gunicorn
 python-dotenv
 bs4
-datetime
-os
 requests
