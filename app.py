@@ -3,6 +3,7 @@ import requests
 from flask import Flask, request
 import bs4
 import datetime
+import pytz
 
 app = Flask(__name__)
 BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
@@ -202,5 +203,7 @@ def raspador_veja():
 
 def horario_raspagem():
     agora = datetime.datetime.now()
-    hora = agora.strftime("%d/%m/%Y, às %H:%M:%S")
+    timezone_br = pytz.timezone('America/Sao_Paulo')
+    horario_br = agora.astimezone(timezone_br)
+    hora = horario_br.strftime("%d/%m/%Y, às %H:%M:%S, no horário de Brasília")
     return hora
