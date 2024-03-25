@@ -188,7 +188,20 @@ def telegram():
     
   return "ok"
 
+@app.route("/biopaulo")
+def bio_antiga():
+   return render_template('biopaulo.html')
 
+@app.route("/cursos")
+def cursos():
+    return render_template('cursos.html')
+
+@app.route("/trabalhos.html")
+def trabalhos():
+    return render_template('trabalhos.html')
+
+
+### RASPADORES ###
 ### FOLHA ###
 
 def raspador_folha():
