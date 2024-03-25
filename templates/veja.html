@@ -50,7 +50,7 @@
 
 <body>
     <div class="container">
-        <h2>Confira as notícias mais lidas da Veja em {{ horario_raspagem() }}</h2>
+        <h2>Confira as notícias mais lidas da Veja neste momento!</h2>
         <br>
         {% for manchete in resultado.split('\n\n') %}
         {% set partes = manchete.split('\n') %}
