@@ -10,7 +10,7 @@ BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
 
 @app.route("/")
 def index():
-  return "Olá, <b>tudo bem</b>?"
+  return render_template('index.html')
 
 @app.route("/escolha" , methods=["POST"])
 def escolha():
