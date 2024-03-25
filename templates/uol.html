@@ -54,7 +54,7 @@
         <br>
         {% for manchete in resultado.split('\n\n') %}
         {% set partes = manchete.split('\n') %}
-        <p>{{ partes[0] }}<br><a href="{{ partes[1] }}">Clique aqui para ler a notícia completa.</a></p>
+        <p><b>{{ partes[0] }}</b><br><a href="{{ partes[1] }}">Clique aqui para ler a notícia completa.</a></p>
         {% endfor %}
     </div>
     <br>
