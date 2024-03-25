@@ -23,7 +23,7 @@ def uol():
         azinho = li.find('a')
         link = azinho.get('href')
         titulo = azinho.get('title')
-        manchetes_uol.append(f"{titulo}\n<a href='{link}'")
+        manchetes_uol.append(f"{titulo}\n<a href='{link}'></a>")
     return render_template('uol.html', resultado = "\n\n".join(manchetes_uol))
 
 @app.route("/telegram", methods=["POST"])
