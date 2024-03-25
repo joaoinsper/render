@@ -116,6 +116,20 @@ def bbc():
         manchetes_bbc.append(f"{titulo}\n{link}")
     return render_template('bbc.html', resultado = "\n\n".join(manchetes_bbc))
 
+@app.route('/valor')
+def valor():
+    valor = requests.get('https://valor.globo.com/')
+    soup_valor = bs4.BeautifulSoup(valor.text, 'html.parser')
+    raspagem_valor = soup_valor.find_all('ol', {'class': 'card__highlight__list theme-color-primary-ordered-list'})
+    conteudo_valor = raspagem_valor[0].find_all('h2')
+    manchetes_valor = []
+
+    for conteudo in conteudo_valor:
+        titulo = conteudo.find('a').get('title')
+        link = conteudo.find('a').get('href')
+        manchetes_valor.append(f"{titulo}\n{link}")
+    return render_template('valor.html', resultado = "\n\n".join(manchetes_valor))
+
 @app.route("/telegram", methods=["POST"])
 def telegram():
   url_msg = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage'
