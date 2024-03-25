@@ -196,9 +196,9 @@ def bio_antiga():
 def cursos():
     return render_template('cursos.html')
 
-@app.route("/trabalhos.html")
-def trabalhos():
-    return render_template('trabalhos.html')
+@app.route("/projetos")
+def projetos():
+    return render_template('projetos.html')
 
 
 ### RASPADORES ###
