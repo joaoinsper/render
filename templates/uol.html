@@ -35,7 +35,7 @@
         }
 
         p {
-            white-space: pre-wrap; /* para manter a formatação do texto */
+            white-space: pre-wrap;
         }
 
         footer {
@@ -52,7 +52,10 @@
     <div class="container">
         <h2>Confira as notícias mais lidas do UOL neste momento!</h2>
         <br>
-        <p id="noticias">{{resultado}}</p>
+        {% for manchete in resultado.split('\n\n') %}
+        {% set partes = manchete.split('\n') %}
+        <p>{{ partes[0] }}<br><a href="{{ partes[1] }}">Clique aqui para ler a notícia completa.</a></p>
+        {% endfor %}
         <button onclick="copiarTexto()" class="btn btn-primary">Copiar informações</button>
     </div>
     <br>
@@ -60,18 +63,5 @@
         <p>Página desenvolvida por João Barbosa.</p>
     </footer>
 
-    <script>
-        function copiarTexto() {
-            var noticias = document.getElementById("noticias");
-            var range = document.createRange();
-            range.selectNode(noticias);
-            window.getSelection().removeAllRanges(); // Limpa a seleção atual
-            window.getSelection().addRange(range); // Seleciona o texto
-            document.execCommand("copy"); // Copia o texto para a área de transferência
-            window.getSelection().removeAllRanges(); // Limpa a seleção
-            alert("Texto copiado!"); // Exibe um alerta para o usuário
-        }
-    </script>
 </body>
 </html>
-
