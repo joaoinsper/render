@@ -171,7 +171,7 @@ def raspador_uol():
 
 def raspador_bbc():
     bbc = requests.get('https://www.bbc.com/portuguese/popular/read')
-    soup_bbc = bs4.BeautifulSoup(bbc.text)
+    soup_bbc = bs4.BeautifulSoup(bbc.text, 'html.parser')
     raspagem_bbc = soup_bbc.find_all('div', {'class': 'bbc-14zb6im'})
     manchetes_bbc = []
 
@@ -186,7 +186,7 @@ def raspador_bbc():
 
 def raspador_valor():
     valor = requests.get('https://valor.globo.com/')
-    soup_valor = bs4.BeautifulSoup(valor.text)
+    soup_valor = bs4.BeautifulSoup(valor.text, 'html.parser')
     raspagem_valor = soup_valor.find_all('ol', {'class': 'card__highlight__list theme-color-primary-ordered-list'})
     conteudo_valor = raspagem_valor[0].find_all('h2')
     manchetes_valor = []
@@ -202,7 +202,7 @@ def raspador_valor():
 
 def raspador_veja():
     veja = requests.get('https://veja.abril.com.br/')
-    soup_veja = bs4.BeautifulSoup(veja.text)
+    soup_veja = bs4.BeautifulSoup(veja.text, 'html.parser')
     raspagem_veja = soup_veja.find_all('section', {'class': 'block most-read dark'})
     conteudo_veja = raspagem_veja[0].find_all('div', {'class': 'our-carousel-item'})
     manchetes_veja = []
