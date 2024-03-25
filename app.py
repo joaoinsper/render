@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import bs4
 import datetime
 import pytz
@@ -11,6 +11,22 @@ BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
 @app.route("/")
 def index():
   return "Olá, <b>tudo bem</b>?"
+
+@app.route("/escolha" , methods=["POST"])
+def escolha():
+    escolha = request.form['escolha']
+    if escolha == 'folha':
+        return redirect("https://render-5wce.onrender.com/folha")
+    elif escolha == 'uol':
+        return redirect("https://render-5wce.onrender.com/uol")
+    elif escolha == 'bbc':
+        return redirect("https://render-5wce.onrender.com/bbc")
+    elif escolha == 'valor':
+        return redirect("https://render-5wce.onrender.com/valor")
+    elif escolha == 'veja':
+        return redirect("https://render-5wce.onrender.com/veja")
+    else:
+        return "Opção inválida"
 
 @app.route('/folha')
 def folha():

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do raspador de notícias</title>
+</head>
+<body>
+    <h1>Portal do raspador de notícias</h1>
+    <p>Este é um portal que exibe as notícias mais recentes de diversos sites.</p>
+    <form action="/escolha" method="POST">
+        <label for="escolha">Escolha uma opção:</label>
+        <select id="escolha" name="escolha">
+            <option value="folha">Folha de S.Paulo</option>
+            <option value="uol">UOL</option>
+            <option value="bbc">BBC</option>
+            <option value="valor">Valor</option>
+            <option value="veja">Veja</option>
+        </select>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
