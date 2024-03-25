@@ -103,6 +103,19 @@ def uol():
         manchetes_uol.append(f"{titulo}\n{link}")
     return render_template('uol.html', resultado = "\n\n".join(manchetes_uol))
 
+@app.route('/bbc')
+def bbc():
+    bbc = requests.get('https://www.bbc.com/portuguese/popular/read')
+    soup_bbc = bs4.BeautifulSoup(bbc.text, 'html.parser')
+    raspagem_bbc = soup_bbc.find_all('div', {'class': 'bbc-14zb6im'})
+    manchetes_bbc = []
+
+    for conteudo in raspagem_bbc:
+        titulo = conteudo.text
+        link = conteudo.find('a').get('href')
+        manchetes_bbc.append(f"{titulo}\n{link}")
+    return render_template('bbc.html', resultado = "\n\n".join(manchetes_bbc))
+
 @app.route("/telegram", methods=["POST"])
 def telegram():
   url_msg = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage'
