@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request
+from flask import Flask, request, render_template
 import bs4
 import datetime
 import pytz
@@ -11,6 +11,20 @@ BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
 @app.route("/")
 def index():
   return "Olá, <b>tudo bem</b>?"
+
+@app.route('/uol')
+def uol():
+    result = requests.get('https://www.uol.com.br/')
+    soup_uol = bs4.BeautifulSoup(result.text, 'html.parser')
+    raspagem_uol = soup_uol.find_all('li', {'class': 'mostRead__item'})
+    manchetes_uol = []
+
+    for li in raspagem_uol:
+        azinho = li.find('a')
+        link = azinho.get('href')
+        titulo = azinho.get('title')
+        manchetes_uol.append(f"{titulo}\n{link}")
+    return render_template('uol.html', resultado = "\n\n".join(manchetes_uol))
 
 @app.route("/telegram", methods=["POST"])
 def telegram():
