@@ -130,6 +130,20 @@ def valor():
         manchetes_valor.append(f"{titulo}\n{link}")
     return render_template('valor.html', resultado = "\n\n".join(manchetes_valor))
 
+@app.route('/veja')
+def veja():
+    veja = requests.get('https://veja.abril.com.br/')
+    soup_veja = bs4.BeautifulSoup(veja.text, 'html.parser')
+    raspagem_veja = soup_veja.find_all('section', {'class': 'block most-read dark'})
+    conteudo_veja = raspagem_veja[0].find_all('div', {'class': 'our-carousel-item'})
+    manchetes_veja = []
+
+    for conteudo in conteudo_veja:
+        titulo = conteudo.find('h2').text
+        link = conteudo.find('a').get('href')
+        manchetes_veja.append(f"{titulo}\n{link}")
+    return render_template('veja.html', resultado = "\n\n".join(manchetes_veja))
+
 @app.route("/telegram", methods=["POST"])
 def telegram():
   url_msg = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage'
