@@ -42,7 +42,8 @@
             text-align: center;
         }
 
-        select, input[type="submit"] {
+        select,
+        input[type="submit"] {
             margin-top: 10px;
         }
 
@@ -55,7 +56,8 @@
             text-decoration: none;
             border-radius: 50px;
             border: none;
-            font-weight: bold;;
+            font-weight: bold;
+            ;
         }
 
         footer {
@@ -70,21 +72,22 @@
 <body>
     <div class="container">
         <div class="curso">
-        <h1>Seja bem-vindo ao portal Raspador de Notícias!</h1>
-        <h3>Aqui, você se mantém bem informado e de olho nas notícias mais lidas nos principais portais do Brasil.</h3><br>
-        <div class="form-container">
-        <form action="/escolha" method="POST">
-            <label for="escolha">Escolha um portal de notícias:</label><br>
-            <select id="escolha" name="escolha">
-                <option value="folha">Folha de S.Paulo</option>
-                <option value="uol">UOL</option>
-                <option value="bbc">BBC</option>
-                <option value="valor">Valor</option>
-                <option value="veja">Veja</option>
-            </select><br>
-            <input type="submit" value="Vamos nessa!" class="botao">
-        </form>
-        </div>
+            <h1>Seja bem-vindo ao portal Raspador de Notícias!</h1>
+            <h3>Aqui, você se mantém bem informado e de olho nas notícias mais lidas nos principais portais do Brasil.
+            </h3><br>
+            <div class="form-container">
+                <form action="/escolha" method="POST">
+                    <label for="escolha">Escolha um portal de notícias:</label><br>
+                    <select id="escolha" name="escolha">
+                        <option value="folha">Folha de S.Paulo</option>
+                        <option value="uol">UOL</option>
+                        <option value="bbc">BBC</option>
+                        <option value="valor">Valor</option>
+                        <option value="veja">Veja</option>
+                    </select><br><br>
+                    <input type="submit" value="Vamos nessa!" class="botao">
+                </form>
+            </div>
         </div>
     </div>
     <footer>
