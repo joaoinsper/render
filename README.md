@@ -61,3 +61,7 @@ dados = {"url": url}
 resposta = requests.post(f"https://api.telegram.org/bot{token}/setWebhook", data=dados)
 ```
 Feito esse processo, tudo deve estar funcionando.
+
+## Pasta Templates
+
+Na pasta Templates, estão todos os arquivos HTML que são renderizados com a função render template do Flask. Houve uma estilização básica com elementos CSS.
